@@ -26,6 +26,9 @@ import MissingRabbits from "./components/MissingRabbits";
 // Util function
 import {getDateDifference} from '../../static/utils'
 
+// Fake dB
+import fakeProducts from '../../data/products'
+
 
 const useStyles = makeStyles((theme) => ({
   centered: {
@@ -146,16 +149,24 @@ PromotionCountDow.prototype = {
 
 function BuyStep1(props) {
 
-  const params=useParams();
-
-  
   const classes = useStyles();
-  const redeemPage=(<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
   const theme = createMuiTheme(successFailTheme);
-  const [open, setOpen] = useState(false);
-  const [page, setPage] = useState(props.product && props.product.price>10000?<MissingRabbits />:redeemPage);
+  const params=useParams();
+  const redeemPage=(<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
 
+  const [open, setOpen] = useState(false);
+  const [page, setPage] = useState(redeemPage);
   const [currentTab, setCurrentTab] = useState(tabTitles[0]);
+  const [product, setProduct] = useState(props.product);
+
+    // Fetch the DB to get the product passed in parms
+  useEffect(()=>{
+    const search=fakeProducts.find(el=>el.id===Number(params.product))
+    console.log(params.product,search)
+
+    setProduct(search);
+
+  }, [])
 
 
   
@@ -189,7 +200,6 @@ function BuyStep1(props) {
             className={classes.media}
             image="/assets/dummy/buy/shop_thumbnail.png"
           />
-          {/* <img src="/assets/dummy/buy/shop_thumbnail.png" alt="" /> */}
         </Grid>
         {/* Infos */}
         <Grid
@@ -213,20 +223,20 @@ function BuyStep1(props) {
           >
             <Grid item container direction="column" justify="center">
               <Typography variant="h6" color="inherit" align="center">
-                Voucher for Burger King
+                {product && product.name}
               </Typography>
               <Typography
                 variant="caption"
                 color="textSecondary"
                 align="center"
               >
-                FOOD AND DRINKS
+                {product && product.name}
               </Typography>
             </Grid>
 
             <Grid item xs={3} container direction="row" justify="flex-end">
               <Typography component="span" variant="h6" align="center">
-                {(props.product && props.product.price )}
+                {product && product.price }
               </Typography>
             </Grid>
             <Grid item xs={2} container direction="row" justify="flex-start">
@@ -307,20 +317,17 @@ function BuyStep1(props) {
           </Grid>
         </Grid>
         <Grid item xs container spacing={3} direction="row" justify="center">
-          {[1, 2, 3, 4, 5]
-            .map(
-              (el) =>
-                "Voucher for Burger King BGN Foodpanda Voucher For All Users"
-            )
-            .map((title, idx) => (
+          {fakeProducts
+            .map((product, idx) => (
               <Grid key={idx} item sm={12} md={6} lg={4}>
                 <ProductCard
-                  withMoreAction
-                  title={title}
-                  subheader={title}
-                  price={Math.random() * 100000}
-                  image="/assets/dummy/main/burger_king.png"
-                />
+                    withMoreAction
+                    title={product.name}
+                    subheader={product.name}
+                    price={product.price}
+                    image={product.image}
+                    link={`/buy/step1/${product.id}`}
+                  />
               </Grid>
             ))}
         </Grid>

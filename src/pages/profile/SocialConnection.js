@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux'
+
 import {
   Grid,
   Box,
@@ -186,5 +188,13 @@ function SocialConnection(props) {
 }
 
 SocialConnection.propTypes = {};
+const mapStateToProps = (state) => ({
+  user: state.userState.user
+  
+})
 
-export default SocialConnection;
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SocialConnection)

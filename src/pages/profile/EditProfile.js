@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux'
 import {
   Grid,
   Box,
@@ -66,7 +67,7 @@ function EditProfile(props) {
         </Grid>
         <Grid item xs={12} container spacing={2}>
           <Grid item xs={4} container justify="center">
-            <Avatar style={{ width: "80px", height: "80px" }} />
+            <Avatar  grade={props.user.badge}  style={{ width: "80px", height: "80px" }} />
           </Grid>
           <Grid item xs={8} container direction="column" justify="center">
             <Grid item>
@@ -178,4 +179,13 @@ function EditProfile(props) {
 
 EditProfile.propTypes = {};
 
-export default EditProfile;
+const mapStateToProps = (state) => ({
+  user: state.userState.user
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)

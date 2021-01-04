@@ -19,6 +19,16 @@ const products=[
     image: "/assets/dummy/main/burger_king.png",
     price: 17000
     },
+    {
+    name: "Voucher for Burger King",
+    image: "/assets/dummy/main/burger_king.png",
+    price: 22000
+    },
+    {
+    name: "Voucher for Burger King",
+    image: "/assets/dummy/main/burger_king.png",
+    price: 28000
+    },
 
 
 ]

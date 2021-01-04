@@ -41,14 +41,14 @@ function AppBar(props) {
     <div className={classes.root}>
       <TopBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <div  className={classes.title}>
             <img src="/assets/imgs/toolbar_logo.png" alt=""/>
           </div>

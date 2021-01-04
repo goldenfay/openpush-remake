@@ -1,6 +1,6 @@
 const user={
     email: "exemple@exemple.com",
-    badge: "silver",
+    badge: "silver_medal",
     rabbits: 6576
 }
 

@@ -8,6 +8,9 @@ import CustomCard from "../../components/CustomCard";
 import ProductCard from "../../components/ProductCard";
 import SocialMediaFooter from "../../components/SocialMediaFooter";
 
+// Fake dB
+import fakeProducts from '../../data/products'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -86,21 +89,17 @@ function Wallet(props) {
             }
           />
         </Grid>
-        {[1, 2, 3, 4, 5]
-          .map(
-            (el) =>
-              "Voucher for Burger King BGN Foodpanda Voucher For All Users"
-          )
-          .map((title, idx) => (
+        {fakeProducts
+          .map((product, idx) => (
             <Grid key={idx} item sm={12} md={6} lg={4}>
               <ProductCard
-                disabled={idx >= 2}
-                withMoreAction
-                title={title}
-                subheader={title}
-                price={Math.random() * 100000}
-                image="/assets/dummy/main/burger_king.png"
-              />
+                    withMoreAction
+                    title={product.name}
+                    subheader={product.name}
+                    price={product.price}
+                    image={product.image}
+                    link={`/buy/step1/${product.id}`}
+                  />
             </Grid>
           ))}
       </Grid>

@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux'
+
 import {
   Grid,
   Box,
@@ -350,4 +352,13 @@ function UpgradeLevel(props) {
 
 UpgradeLevel.propTypes = {};
 
-export default UpgradeLevel;
+const mapStateToProps = (state) => ({
+  user: state.userState.user
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpgradeLevel)

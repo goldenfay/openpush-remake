@@ -11,17 +11,17 @@ const nav=[
     },
     {
         title: 'wheel',
-        link: 'wheel'
+        link: '/wheel'
 
     },
     {
         title: 'wallet',
-        link: 'wallet'
+        link: '/wallet'
 
     },
     {
         title: 'profile',
-        link: 'profile'
+        link: '/profile'
 
     },
     

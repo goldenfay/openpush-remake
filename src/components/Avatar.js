@@ -98,7 +98,7 @@ export default function BadgeAvatars(props) {
         badgeContent={
           <SmallAvatar
             alt={props.alt}
-            src={props.badge || "/assets/imgs/badges/bronze_medal.png"}
+            src={`/assets/imgs/badges/${props.grade}.png` || "/assets/imgs/badges/bronze_medal.png"}
           />
         }
       >

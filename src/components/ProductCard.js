@@ -11,7 +11,8 @@ import {
   CardActions,
   IconButton,
   Typography,
-  Button
+  Button,
+  Link
 } from "@material-ui/core";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -87,8 +88,10 @@ function ProductCard(props) {
                 </Grid>
               </Grid>
               <Grid item container justify="center">
-                <Button color="primary" variant="contained" >
+                <Button color="primary" variant="contained" component={BrowserLink} to={props.link}>
+                  <Link >
                   <ShoppingCartIcon color="action"/> 
+                  </Link>
                   </Button>
 
               </Grid>

@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link as BrowserLink} from "react-router-dom";
 import { Grid, Typography, Button, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import FluidImage from "../../../components/FluidImage";
 
 const choices = [
   {
     label: "Fortune wheel",
-    to: "#",
+    to: "/wheel",
   },
   {
     label: "Accept notification",
@@ -19,11 +19,15 @@ const choices = [
   },
   {
     label: "Fill social connection",
-    to: "#",
+    to: "/profile/social",
   },
 ];
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(4)
+
+  },
   headIcon: {
     display: "flex",
     flexDirection: "row",
@@ -44,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 function MissingRabbits(props) {
   const classes = useStyles();
   return (
-    <Grid container justify="center">
+    <Grid container justify="center" className={classes.root}>
       {/* Head */}
       <Grid item xs={12} container direction="row" justify="center">
         <Grid item xs={3} className={classes.headIcon}>
@@ -68,8 +72,8 @@ function MissingRabbits(props) {
                 variant="outlined"
                 // color="primary"
                 className={classes.choiceButton}
-                // component={Link}
-                // href={choice.to}
+                component={BrowserLink}
+                to={choice.to}
               >
                 <Typography
                   align="center"

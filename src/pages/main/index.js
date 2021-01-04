@@ -10,7 +10,18 @@ import Footer from "../../components/Footer";
 
 const AppBar= lazy(()=> import('../navbar/auth-top-bar'));
 const useStyles = makeStyles((theme) => ({
+  container: {
   
+    [theme.breakpoints.up('xl')]: {
+      fisplay: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-between'
+
+
+
+    }
+
+  },
   content: {
     margin: "auto",
     padding: theme.spacing(2),
@@ -19,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "hidden",
     flexDirection: "column",
+    [theme.breakpoints.up('xl')]: {
+      padding: "0 20%"
+
+    }
    
   },
   bglight: {
@@ -26,12 +41,17 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     backgroundColor: theme.palette.primary.main,
-    position: 'relative',
+    position: 'rlative',
     paddingBottom: '30px',
     marginTop: 'auto',
     bottom: 0,
     left:0,
-    right: 0
+    right: 0,
+    // [theme.breakpoints.up('xl')]: {
+    //   padding: "0 30%"
+
+    // }
+    
 
   }
   
@@ -43,7 +63,7 @@ function Index(props) {
   const theme=useTheme();
   return (
     <ThemeProvider theme={theme}>
-    <div>
+    <div className={classes.container} >
       <Suspense fallback={<div></div>}>
 
       {props.user && <AppBar theme={theme}{...props}/>}

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux'
+
 import {
   Grid,
   Box,
@@ -188,4 +190,13 @@ function Settings(props) {
 
 Settings.propTypes = {};
 
-export default Settings;
+const mapStateToProps = (state) => ({
+  user: state.userState.user
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

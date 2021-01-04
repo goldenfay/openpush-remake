@@ -34,7 +34,7 @@ const footerLinks=[
  {label: "• Privacy policy", link: '#'},
  {label: "• What is openpush", link: '#'},
  {label: "• Get golden rabbits", link: '#'} ,
-{label: "• FAQ", link: 'FAQ'},
+{label: "• FAQ", link: '/FAQ'},
 {label: "• Deal", link: '#'},
  {label: "• Social", link: '#'},
  {label: "contact", link: '#'}]
