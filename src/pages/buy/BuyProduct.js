@@ -148,6 +148,7 @@ function BuyStep1(props) {
 
   const params=useParams();
 
+  
   const classes = useStyles();
   const redeemPage=(<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
   const theme = createMuiTheme(successFailTheme);
