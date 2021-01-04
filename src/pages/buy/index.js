@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -50,6 +51,15 @@ function ProductBuy(props) {
   );
 }
 
-ProductBuy.propTypes = {};
+ProductBuy.propTypes = {
+  product: PropTypes.object.isRequired
+};
+ProductBuy.defaultProps = {
+  product: {
+    id: 23,
+    name: "Voucher for Burger King",
+    price: 21000
+  }
+}
 
 export default ProductBuy;

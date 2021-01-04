@@ -60,10 +60,11 @@ function EditProfile(props) {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             width={1}
             p={3}
           >
-            <Typography variant="h4">Edit Profile</Typography>
+            <Typography variant="h5">Edit Profile</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} container spacing={2}>

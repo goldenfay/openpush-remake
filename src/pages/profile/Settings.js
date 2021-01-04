@@ -122,9 +122,10 @@ function Settings(props) {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             width={1}
           >
-            <Typography variant="h4">Settings</Typography>
+            <Typography variant="h5">Settings</Typography>
           </Box>
         </Grid>
       </Grid>

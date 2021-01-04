@@ -71,7 +71,7 @@ function AppBar(props) {
               <img src="/assets/imgs/toolbar_logo.png" alt="" />
             </div>
             <div className={classes.navs}>
-                {isWidthUp("md", props.width) && <NavTabs />}
+                {isWidthUp("md", props.width) && <NavTabs {...props}/>}
             </div>
             <Box display="flex" flexDirection="row" alignItems="center" className={classes.rabbitsContainer}>
                 <Typography>
@@ -93,8 +93,8 @@ function AppBar(props) {
           >
             <Toolbar>
               
-              <Box display="flex" flexDirection="row" alignItems="end" justifyContent="center" width={1}>
-                <NavTabs />
+              <Box display="flex" flexDirection="row" alignItems="end"  width={1}>
+                <NavTabs {...props}/>
             </Box>
             </Toolbar>
           </TopBar>

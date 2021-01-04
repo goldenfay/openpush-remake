@@ -158,9 +158,10 @@ function SocialConnection(props) {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             width={1}
           >
-            <Typography variant="h4">Social connection</Typography>
+            <Typography variant="h5">Social connection</Typography>
             
           </Box>
         </Grid>

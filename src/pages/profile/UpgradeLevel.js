@@ -76,9 +76,10 @@ function UpgradeLevel(props) {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             width={1}
           >
-            <Typography variant="h4">Upgrade Level</Typography>
+            <Typography variant="h5">Upgrade Level</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} container direction="column" spacing={1}>

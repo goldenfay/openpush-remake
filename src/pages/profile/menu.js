@@ -18,8 +18,8 @@ const menu = [
       icon: <AccountIcon />,
     },
     {
-      title: "Achievement",
-      link: 'acheivement',
+      title: "Achievements",
+      link: 'achievements',
       icon: <TrophyIcon />,
     },
     {

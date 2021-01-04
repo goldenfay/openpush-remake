@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
 import PropTypes from "prop-types";
 import {
   makeStyles,
@@ -20,6 +21,10 @@ import ProductCard from "../../components/ProductCard";
 import CustomModal from "../../components/CustomModal";
 import RedeemProduct from "./components/RedeemProduct";
 import MissingRabbits from "./components/MissingRabbits";
+
+// Util function
+import {getDateDifference} from '../../static/utils'
+
 
 const useStyles = makeStyles((theme) => ({
   centered: {
@@ -71,12 +76,35 @@ const instructions = [
 ];
 
 export const PromotionCountDow = (props) => {
+  const deadLine=new Date(props.expirationDate);
+  const [remainingTime,setRemainingTime]=useState(getDateDifference(deadLine));
+  const [promotionExpired,setPromotionExpired]=useState(false);
   const cols = [
     { label: "Days", value: props.days },
     { label: "Hours", value: props.hours },
     { label: "Minutes", value: props.minutes },
     { label: "Seconds", value: props.seconds },
   ];
+
+  useEffect(()=>{
+    let x=setInterval(function() {
+
+      const remains=getDateDifference(deadLine);
+      setRemainingTime(remains)
+          
+    
+        
+        // If the count down is over, write some text 
+        if (remains.distance < 0) {
+            clearInterval(x);
+            setPromotionExpired(true)
+            
+        }
+        
+      }, 1000);
+
+},[])
+
   return (
     <Grid
       container
@@ -93,7 +121,10 @@ export const PromotionCountDow = (props) => {
           direction="column"
         >
           <Typography align="center" variant="h3">
-            {el.value}
+            {idx===0 && remainingTime.days}
+            {idx===1 && remainingTime.hours}
+            {idx===2 && remainingTime.minutes}
+            {idx===3 && remainingTime.seconds}
           </Typography>
           <Typography align="center" variant="caption" color="textSecondary">
             {el.label}
@@ -104,23 +135,39 @@ export const PromotionCountDow = (props) => {
   );
 };
 PromotionCountDow.prototype = {
-  days: PropTypes.number.isRequired,
-  hours: PropTypes.number.isRequired,
-  minutes: PropTypes.number.isRequired,
-  seconds: PropTypes.number.isRequired,
+  // days: PropTypes.number.isRequired,
+  // hours: PropTypes.number.isRequired,
+  // minutes: PropTypes.number.isRequired,
+  // seconds: PropTypes.number.isRequired,
+  expirationDate: PropTypes.object.isRequired,
+
 };
 
 function BuyStep1(props) {
   const classes = useStyles();
+  const redeemPage=(<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
   const theme = createMuiTheme(successFailTheme);
   const [open, setOpen] = useState(false);
-  const [page, setPage] = useState(props.product && props.product.price>10000?<MissingRabbits />:<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
+  const [page, setPage] = useState(props.product && props.product.price>10000?<MissingRabbits />:redeemPage);
 
   const [currentTab, setCurrentTab] = useState(tabTitles[0]);
+
+
+  
 
   const handleChange = (e, val) => {
     setCurrentTab(val);
   };
+
+  const redeemProduct=()=>{
+    const userCredit=props.user.rabbits;
+    const {price}=props.product;
+
+    if(userCredit>price) setPage(redeemPage)
+    else setPage(<MissingRabbits/>)
+
+    setOpen(true)
+  }
   return (
     <Grid container spacing={3} direction="column">
       <CustomModal
@@ -174,7 +221,7 @@ function BuyStep1(props) {
 
             <Grid item xs={3} container direction="row" justify="flex-end">
               <Typography component="span" variant="h6" align="center">
-                28 000
+                {(props.product && props.product.price )}
               </Typography>
             </Grid>
             <Grid item xs={2} container direction="row" justify="flex-start">
@@ -201,10 +248,11 @@ function BuyStep1(props) {
             </Grid>
             <Grid item xs={12} container justify="center">
               <PromotionCountDow
-                days={3}
-                hours={12}
-                minutes={55}
-                seconds={6}
+                // days={3}
+                // hours={12}
+                // minutes={55}
+                // seconds={6}
+                expirationDate={new Date(new Date().getFullYear(),new Date().getMonth(), new Date().getDate()+1   )}
                 classes={classes}
               />
             </Grid>
@@ -214,7 +262,7 @@ function BuyStep1(props) {
                   fullWidth
                   color="primary"
                   variant="contained"
-                  onClick={() => setOpen(true)}
+                  onClick={() => redeemProduct()}
                 >
                   {" "}
                   <Typography color="textPrimary">Redeem product</Typography>
@@ -276,6 +324,24 @@ function BuyStep1(props) {
   );
 }
 
-BuyStep1.propTypes = {};
+BuyStep1.propTypes = {
+  product: PropTypes.object.isRequired
+};
 
-export default BuyStep1;
+BuyStep1.defaultProps = {
+  product: {
+    id: 23,
+    name: "Voucher for Burger King",
+    price: 21000
+  }
+}
+const mapStateToProps = (state) => ({
+  user: state.userState.user
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyStep1)

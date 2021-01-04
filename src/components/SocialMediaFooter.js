@@ -11,13 +11,13 @@ const useStyles = makeStyles((theme) => ({
 function SocialMediaFooter(props) {
   const classes=useStyles()
   return (
-    <Grid container justify="center" direction="column" spacing={4} className={classes.container}>
-      <Grid item xs container direction="row" justify="center">
-        <Typography variant="h4" > Stay connected</Typography>
+    <Grid item container justify="center"  spacing={4} className={classes.container}>
+      <Grid item xs={12} container direction="row" justify="center">
+        <Typography variant="h4" align="center"> Stay connected</Typography>
       </Grid>
       <Grid
         item
-        xs
+        xs={12}
         container
         direction="row"
         justify="center"
