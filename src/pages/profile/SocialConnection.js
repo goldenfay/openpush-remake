@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {
   Grid,
   Box,
@@ -12,7 +11,6 @@ import {
 } from "@material-ui/core";
 import { makeStyles,withStyles } from "@material-ui/core/styles";
 //Icons
-import RightArrow from "@material-ui/icons/ArrowForwardIosOutlined";
 import { ReactComponent as WhatsAppIcon } from '../../imgs/social/whatsapp_logo.svg';
 import { ReactComponent as TwitterIcon } from '../../imgs/social/twitter_logo.svg';
 import { ReactComponent as FacebookIcon } from '../../imgs/social/facebook_logo.svg';

@@ -32,7 +32,7 @@ export default withWidth()(function router(props) {
           <Route path="" element={<MainPage {...props}  />} />
           <Route path="wallet" element={<WalletPage {...props} />} />
           <Route path="wheel" element={<WheelPage {...props} />} />
-          <Route path="buy/step1" element={<BuyProduct {...props} />} />
+          <Route path="buy/step1/:product" element={<BuyProduct {...props} />} />
           <Route path="faq" element={<FAQ  {...props}/>} />
           <Route path="profile" element={isLargeDevice ? <DesktopLayout {...props} />: <MobileLayout {...props}/> } >
             <Route path="" element={isLargeDevice ? <EditProfile/>: <ProdileMainMobile {...props}/> } />

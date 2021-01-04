@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {
   Grid,
   Typography,
-  CardMedia,
   FormControl,
   IconButton,
   FilledInput,

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Grid, Box, Typography } from "@material-ui/core";
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
@@ -100,22 +99,13 @@ const AccordionSummary = withStyles({
 
 function FAQ(props) {
   const classes = useStyles();
-  const [socialSwitches, setSocialSwitches] = useState(
-    Object.assign({}, ...Menu.map((el) => ({ [el.id]: el.linked })))
-  );
+
   const [expanded, setExpanded] = React.useState('panel1');
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
 
-  const updateSocialState = (e) => {
-    setSocialSwitches({
-      ...socialSwitches,
-      [e.target.name]: e.target.checked,
-    });
-    if (e.target.checked) alert(`Link with your ${e.target.name} account`);
-  };
   return (
     <Grid container direction="column" className={classes.root}>
       {/* Head section */}

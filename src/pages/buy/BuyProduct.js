@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import {useParams} from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   makeStyles,
@@ -144,6 +145,9 @@ PromotionCountDow.prototype = {
 };
 
 function BuyStep1(props) {
+
+  const params=useParams();
+
   const classes = useStyles();
   const redeemPage=(<RedeemProduct confirmHandler={()=>console.log()} cancelHandler={()=>console.log()}/>);
   const theme = createMuiTheme(successFailTheme);

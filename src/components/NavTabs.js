@@ -11,7 +11,7 @@ import { ReactComponent as WalletIcon } from "../imgs/icons/nav/wallet.svg";
 import { ReactComponent as ProfileIcon } from "../imgs/icons/nav/profile.svg";
 
 import navItems from "../static/nav";
-import { Typography,Button } from "@material-ui/core";
+import { Typography} from "@material-ui/core";
 const navIcons = [
   <HomeIcon />,
   <CategoriesIcon />,

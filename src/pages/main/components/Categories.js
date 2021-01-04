@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -7,7 +6,6 @@ import {
   Typography,
   TextField,
   Link,
-  IconButton,
   Button,
   Tabs,
   Tab,
@@ -19,6 +17,10 @@ import { useState } from "react";
 import CustomCard from "../../../components/CustomCard";
 import ProductCard from "../../../components/ProductCard";
 import TabPanel from "../../../components/TabPanel";
+
+// Fake products data
+
+import Products from '../../../data/products'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -128,19 +130,16 @@ function Categories(props) {
                 }
               />
             </Grid>
-            {[1, 2, 3, 4, 5]
-              .map(
-                (el) =>
-                  "Voucher for Burger King BGN Foodpanda Voucher For All Users"
-              )
-              .map((title,idx) => (
+            {Products
+              .map((product,idx) => (
                 <Grid key={idx} item sm={12} md={6} lg={4}>
                   <ProductCard
                     withMoreAction
-                    title={title}
-                    subheader={title}
-                    price={Math.random() * 100000}
-                    image="/assets/dummy/main/burger_king.png"
+                    title={product.name}
+                    subheader={product.name}
+                    price={product.price}
+                    image={product.image}
+                    link={`/buy/step1/${product.id}`}
                   />
                 </Grid>
               ))}

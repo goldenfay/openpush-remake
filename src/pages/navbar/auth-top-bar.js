@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   AppBar as TopBar,
   Toolbar,
   Typography,
-  Button,
   Box,
   IconButton,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { makeStyles,useTheme,ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles,ThemeProvider } from "@material-ui/core/styles";
 import { isWidthDown, isWidthUp } from "@material-ui/core/withWidth";
 
 // Components
@@ -51,7 +50,6 @@ function AppBar(props) {
     console.log(theme)
   const classes = useStyles(theme);
 
-  const [open, setOpen] = useState(false);
 
   return (
     <>
