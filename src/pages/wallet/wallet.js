@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   bglight: {
     backgroundColor: theme.palette.primary.light,
   },
+  section: {
+    marginTop: theme.spacing(3)
+  }
 }));
 
 function TabPanel(props) {
@@ -94,7 +97,7 @@ function Wallet(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className={classes.section}>
       <Grid item sm={12} md={6} lg={4} >
               {/* Instructions */}
               <CustomCard
