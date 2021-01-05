@@ -293,7 +293,8 @@ function BuyStep1(props) {
               value={currentTab}
               onChange={handleChange}
               indicatorColor="secondary"
-              variant="fullWidth"
+              variant="scrollable"
+              scrollButtons="auto"
               aria-label="categories filters tabs"
             >
               {tabTitles.map((el, idx) => (

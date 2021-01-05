@@ -8,6 +8,7 @@ import {MyWallet as WalletPage,FortuneWheel as WheelPage} from './pages/wallet/'
 import {DesktopLayout,MobileLayout} from './pages/profile/';
 const Main=React.lazy(()=>import('./pages/main/') );
 const MainPage=React.lazy(()=>import('./pages/main/main') );
+const CategoriesPage=React.lazy(()=>import('./pages/main/categories') );
 const BuyProduct=React.lazy(()=>import('./pages/buy/'));
 const ProdileMainMobile=React.lazy(()=>import('./pages/profile/small/Main') );
 const EditProfile=React.lazy(()=>import('./pages/profile/EditProfile') );
@@ -30,6 +31,7 @@ export default withWidth()(function router(props) {
         <Route path="/"   element={<Main {...props}/>}>
          
           <Route path="" element={<MainPage {...props}  />} />
+          <Route path="categories" element={<CategoriesPage {...props} />} />
           <Route path="wallet" element={<WalletPage {...props} />} />
           <Route path="wheel" element={<WheelPage {...props} />} />
           <Route path="buy/step1/:product" element={<BuyProduct {...props} />} />

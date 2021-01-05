@@ -37,28 +37,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Main(props) {
+function CategoriesPage(props) {
   //   const classes = useStyles();
   const classes = useStyles();
 
   return (
     <>
-      <Grid
-        container
-        className={classes.content}
-        component={Box}
-        justifyContent="center"
-      >
-        <ProductsCarousel items={carouselItems}/>
-
-        
-      </Grid>
+     
       <Categories/>
       <SocialMadiaFooter/>
     </>
   );
 }
 
-Main.propTypes = {};
+CategoriesPage.propTypes = {};
 
-export default Main;
+export default CategoriesPage;

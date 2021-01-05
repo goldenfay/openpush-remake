@@ -6,7 +6,7 @@ const nav=[
     },
     {
         title: 'categories',
-        link: '/'
+        link: '/categories'
 
     },
     {

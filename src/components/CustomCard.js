@@ -15,6 +15,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     width:"100%",
+    // height: "100%"
   },
   media: {
     height: 0,
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 function CustomCard(props) {
   const classes = useStyles();
+  const {withMoreAction,moreActionColor,title,subTitle,image,mediaTitle,content,body,actions,...others}=props;
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -35,7 +37,7 @@ function CustomCard(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Card className={classes.root}>
+      <Card className={classes.root} {...others}>
         <CardHeader
           action={
             props.withMoreAction && (

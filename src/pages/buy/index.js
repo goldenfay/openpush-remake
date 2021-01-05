@@ -9,7 +9,7 @@ import QRActivation from "./components/ActivationQR";
 import ProductsCarousel from "../main/components/ProductionsCarousel";
 import SocialMediaFooter from "../../components/SocialMediaFooter";
 const carouselItems = [1, 2, 3, 4].map(
-  (el) => "/assets/dummy/main/categories.png"
+  (el) => "/assets/dummy/main/categories.jpg"
 );
 
 const useStyles = makeStyles((theme) => ({

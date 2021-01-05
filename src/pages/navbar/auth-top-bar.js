@@ -6,12 +6,13 @@ import {
   Toolbar,
   Typography,
   Box,
-  IconButton,
   Button,
   Menu,
   MenuItem,
+  Icon,
+  ListItemIcon
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import { isWidthDown, isWidthUp } from "@material-ui/core/withWidth";
@@ -41,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   dropdownmenu: {
-    minWidth: 300
+    minWidth: 300,
+    position: "relative",
+    
 
   },
   dropdownmenuItem: {
@@ -147,10 +150,24 @@ function AppBar(props) {
                     open={open}
                     onClose={() => setAnchorEl(null)}
                     className={classes.dropdownmenu}
+                    
                   >
-                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/profile'}>Profile</MenuItem>
-                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/profile/settings'}>Settings</MenuItem>
-                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/'}>Logout</MenuItem>
+                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/profile'}>
+                      <ListItemIcon> <Icon><img  src="/assets/imgs/icons/edit_icon.svg"  alt=""/></Icon>  </ListItemIcon>
+                      My Profile
+                    </MenuItem>
+                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/'}>
+                      <ListItemIcon> <Icon><img  src="/assets/imgs/icons/sweetclash_icon.svg"  alt=""/></Icon></ListItemIcon>
+                      Connect sweetclash account
+                    </MenuItem>
+                    {/* <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/profile/settings'}>
+                      <ListItemIcon> <Icon><img  src="/assets/imgs/icons/"  alt=""/></Icon></ListItemIcon>
+                      Settings
+                    </MenuItem> */}
+                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/'}>
+                      <ListItemIcon> <Icon><img  src="/assets/imgs/icons/logout_icon.svg"  alt=""/></Icon></ListItemIcon>
+                      Logout
+                    </MenuItem>
                   </Menu>
                 </Box>
               )}
