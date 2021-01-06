@@ -20,6 +20,8 @@ import { isWidthDown, isWidthUp } from "@material-ui/core/withWidth";
 // Components
 import NavTabs from "../../components/NavTabs";
 import Avatar from "../../components/Avatar";
+import CustomModal from "../../components/CustomModal";
+import Logout from "../auth/logout";
 
 const useStyles = makeStyles((theme) => ({
   topAppBar: {
@@ -74,6 +76,7 @@ function AppBar(props) {
   const classes = useStyles(theme);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [logoutOpen, setLogoutOpen] = React.useState(false);
 
   
 
@@ -164,11 +167,17 @@ function AppBar(props) {
                       <ListItemIcon> <Icon><img  src="/assets/imgs/icons/"  alt=""/></Icon></ListItemIcon>
                       Settings
                     </MenuItem> */}
-                    <MenuItem className={classes.dropdownmenuItem} component={BrowserLink} to={'/'}>
+                    <MenuItem className={classes.dropdownmenuItem} onClick={()=>setLogoutOpen(true)}>
                       <ListItemIcon> <Icon><img  src="/assets/imgs/icons/logout_icon.svg"  alt=""/></Icon></ListItemIcon>
                       Logout
                     </MenuItem>
                   </Menu>
+                  <CustomModal 
+                  body={<Logout handleClose={()=>setLogoutOpen(false)} />}
+                  open={logoutOpen}
+                  handleClose={()=>setLogoutOpen(false)}
+                  width="lg"
+                  />
                 </Box>
               )}
             </Toolbar>

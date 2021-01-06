@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux'
 import {Outlet,Link } from "react-router-dom";
 import {
   Grid,
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Index({currentPage, ...props}) {
+  console.log(props)
     const classes = useStyles();
   return (
     <Grid container direction="column">
@@ -91,5 +93,15 @@ function Index({currentPage, ...props}) {
 }
 
 Index.propTypes = {};
+const mapStateToProps = (state) => ({
+  currentPage: state.layoutState.current_page
+  
+})
 
-export default Index;
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)
+
+

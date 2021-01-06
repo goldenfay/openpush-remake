@@ -6,3 +6,10 @@ export const login=(user)=>{
 
     }
 }
+
+export const logout=()=>{
+    localStorage.removeItem('user')
+    return {
+        type: 'LOGOUT',
+    }
+}

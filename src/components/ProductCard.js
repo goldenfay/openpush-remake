@@ -35,6 +35,14 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     backgroundColor: theme.palette.primary.light,
     opacity: 0.5
+  },
+  leftSide: {
+    display: 'flex',
+    flexDirection:'column',
+    alignItems: 'flex-between',
+    justifyContent: 'space-between'
+
+    
   }
 }));
 
@@ -74,9 +82,9 @@ function ProductCard(props) {
 
         <CardContent>
           <Grid container spacing={3}>
-            <Grid item xs={8} p={2}>
+            <Grid item xs={8} p={2} className={classes.leftSide}>
               <Typography component="span" variant="body1">{props.title}</Typography>
-              <Typography component="span" variant="caption">{props.subTitle}</Typography>
+              <Typography component="span" variant="caption" color="textSecondary">{props.subheader}</Typography>
             </Grid>
             <Grid item xs={4} container justify="center" spacing={3}>
               <Grid item container justify="center" alignItems="center" spacing={2} >

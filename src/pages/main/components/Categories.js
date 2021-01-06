@@ -91,7 +91,7 @@ const tabprops = (index) => {
 
 const tabTitles = [
   "All",
-  "Food & Drins",
+  "Food & Drinks",
   "Health & Beauty",
   "Sports & Hobbies",
   "Children",
@@ -224,7 +224,7 @@ function Categories(props) {
                   <ProductCard
                     withMoreAction
                     title={product.name}
-                    subheader={product.name}
+                    subheader={product.category}
                     price={product.price}
                     image={product.image}
                     link={`/buy/step1/${product.id}`}
