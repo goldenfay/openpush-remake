@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 0,
     },
   },
+  itemBody: {
+    color: theme.palette.type==="dark"?theme.palette.text.secondary: theme.palette.text.primary
+
+  },
   expendIcon: {
     color: theme.palette.secondary.main
   }
@@ -94,7 +98,10 @@ const AccordionSummary = withStyles({
       margin: '12px 0',
     },
   },
-  expanded: {},
+  expanded: {
+    
+  },
+  
 })(MuiAccordionSummary);
 
 function FAQ(props) {
@@ -131,7 +138,7 @@ function FAQ(props) {
           <Typography>{el.title}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="caption" color="textSecondary">
+          <Typography variant="caption" color="textSecondary" className={classes.itemBody}>
             {el.body}
           </Typography>
         </AccordionDetails>

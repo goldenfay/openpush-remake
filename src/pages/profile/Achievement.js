@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5)
     
   },
+  captionText: {
+    color: theme.palette.type==="dark"?theme.palette.text.secondary: theme.palette.text.primary
+
+  },
   walletContainer: {
     display: "flex",
     flexDirection: "row",
@@ -116,7 +120,7 @@ function Achievement(props) {
         </List>
       </Grid>
       <Grid item xs={12} container justify="center" className={classes.section}>
-        <Typography color="textSecondary" align="center"> Complete the 10 differents achivement and unlock next</Typography>
+        <Typography color="textSecondary" align="center" className={classes.captionText}> Complete the 10 differents achivement and unlock next</Typography>
       </Grid>
       {/* Locked Achievements section */}
       <Grid item xs={12} container>

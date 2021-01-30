@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   paddedTitle: {
     paddingLeft: theme.spacing(2),
   },
+  captionText: {
+    color: theme.palette.type==="dark"?theme.palette.text.secondary: theme.palette.text.primary
+
+  },
   form: {
     paddingLeft: theme.spacing(5),
     width: "100%",
@@ -106,7 +110,7 @@ function UpgradeLevel(props) {
             </Typography>
           </Box>
           <Grid item xs={12} container>
-            <Typography variant="caption" color="textSecondary">
+            <Typography variant="caption" color="textSecondary" className={classes.captionText}>
               Collect up to 200 000 Rabbits, 5 vouchers at the same time,
               unlimited discounts and 5 000 Rabbits bonus! Now, You can spin the
               wheel every 3.5 hours{" "}
@@ -149,7 +153,7 @@ function UpgradeLevel(props) {
           </Grid>
         </Grid>
         <Grid item xs={12} container>
-          <Typography variant="caption" color="textSecondary">
+          <Typography variant="caption" color="textSecondary" className={classes.captionText}>
             Enter you number in the following format: +359 89 123 4567 (note,
             there is no "0" in front of your number). If you don't get the
             verification code the first time, please contact the support team
@@ -172,7 +176,7 @@ function UpgradeLevel(props) {
             </Typography>
           </Box>
           <Grid item xs={12} container>
-            <Typography variant="caption" color="textSecondary">
+            <Typography variant="caption" color="textSecondary" className={classes.captionText}>
               Collect up to 250 000 Rabbits, unlimited vouchers, unlimited
               discounts and 10 000 Rabbits bonus! Now, You can spin the wheel
               every 3 hours!
@@ -234,7 +238,7 @@ function UpgradeLevel(props) {
           </Grid>
         </Grid>
         <Grid item xs={12} container>
-          <Typography variant="caption" color="textSecondary">
+          <Typography variant="caption" color="textSecondary" className={classes.captionText}>
             Enter you number in the following format: +359 89 123 4567 (note,
             there is no "0" in front of your number). If you don't get the
             verification code the first time, please contact the support team
@@ -249,7 +253,7 @@ function UpgradeLevel(props) {
           <Grid item xs={12} container className={classes.formgroupUp} spacing={3}>
             <Grid item xs={12} container direction="column" spacing={1}>
               <Typography variant="h5"> Additional Information </Typography>
-              <Typography variant="caption" color="textSecondary">
+              <Typography variant="caption" color="textSecondary" className={classes.captionText}>
                 Get more rabbits by filling in the following information
               </Typography>
             </Grid>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux'
-
+import clsx from 'clsx';
 import {
   Grid,
   Box,
@@ -101,6 +101,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     width: "100%",
   },
+  captionText: {
+    color: theme.palette.type==="dark"?theme.palette.text.secondary: theme.palette.text.primary
+
+  },
 }));
 
 function Settings(props) {
@@ -158,7 +162,7 @@ function Settings(props) {
       {/* Theme selection section */}
       <Grid item xs={12} container className={classes.section}>
         <Grid item xs={12}>
-          <label className={classes.formControlLabel}>Choose theme</label>
+          <label className={clsx(classes.formControlLabel,classes.captionText) }>Choose theme</label>
           <FormControl className={classes.formControl}>
             <Select
               labelId="theme-select"
