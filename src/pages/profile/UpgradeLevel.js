@@ -15,8 +15,13 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  [theme.palette.type==='dark'?undefined:'.MuiTypography-colorTextSecondary']:{
+    color: theme.palette.primary.main
+
+  }, 
   root: {
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    '& .MuiTypography-colorTextSecondary': {color: "red"}
   },
   paddedTitle: {
     paddingLeft: theme.spacing(2),
@@ -40,19 +45,19 @@ const useStyles = makeStyles((theme) => ({
   },
   formgroup: {
     [theme.breakpoints.down("md")]: {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.type==='dark'?theme.palette.background.paper:undefined,
       padding: theme.spacing(2),
       marginTop: theme.spacing(2),
     },
   },
   formgroupUp: {
     [theme.breakpoints.up("md")]: {
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.type==='dark'?theme.palette.background.paper:undefined,
       padding: theme.spacing(2),
       marginTop: theme.spacing(2),
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.type==='dark'? theme.palette.primary.light:undefined,
       padding: theme.spacing(2),
       marginTop: theme.spacing(2),
     },
@@ -353,7 +358,8 @@ function UpgradeLevel(props) {
 UpgradeLevel.propTypes = {};
 
 const mapStateToProps = (state) => ({
-  user: state.userState.user
+  user: state.userState.user,
+  mode: state.layoutState.current_theme
   
 })
 

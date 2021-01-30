@@ -54,7 +54,7 @@ const Menu =[
   },
 
 ];
-const useStyles = makeStyles((theme) => ({
+const styles=(theme)=>({
   root: {
     padding: theme.spacing(5),
     [theme.breakpoints.down("sm")]: {
@@ -69,7 +69,9 @@ const useStyles = makeStyles((theme) => ({
    
   },
   listItem: {
-    backgroundColor: theme.palette.grey[700],
+    
+    
+    backgroundColor: theme.palette.type==='dark'? theme.palette.grey[700]:theme.palette.grey[400],
     textTransform: "capitalize",
     borderRadius: '5px 5px 5px 5px',
     margin: '1px',
@@ -77,8 +79,21 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 0,
      
     },
+    [theme.palette.type!=="dark"]: {
+    },
+    // [theme.palette.type==="dark"]: {
+    //   backgroundColor: theme.palette.grey[700],
+    //  textTransform: "capitalize",
+    // borderRadius: '5px 5px 5px 5px',
+    // margin: '1px',
+    // },
     
   },
+});
+const useStyles = makeStyles((theme) => (styles(theme)));
+const useLightModeStyles = makeStyles((theme) => ({
+  ...styles,
+
 }));
 
 const IOSSwitch = withStyles((theme) => ({
@@ -189,7 +204,8 @@ function SocialConnection(props) {
 
 SocialConnection.propTypes = {};
 const mapStateToProps = (state) => ({
-  user: state.userState.user
+  user: state.userState.user,
+  mode: state.layoutState.curren_theme
   
 })
 

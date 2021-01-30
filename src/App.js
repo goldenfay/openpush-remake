@@ -1,58 +1,50 @@
-import React from 'react';
-import { Provider } from "react-redux";
+import React, {useState,useEffect} from 'react';
+import { connect } from "react-redux";
 import './App.css';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import store from './redux/store'
 import Router from './router';
-  //Pages
+  //themes
+import darkTheme from './themes/dark';  
+import LightTheme from './themes/light';  
 
-function App() {
+function App(props) {
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+//   const [theme,setTheme] =useState(createMuiTheme(
+//         props.mode==='dark'? darkTheme: LightTheme
+   
+//   ));
+//   useEffect(()=>{
+//     console.log(props.mode)
+//     setTheme(createMuiTheme(
+//       props.mode==='dark'? darkTheme: LightTheme
+ 
+// ))
 
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
+//   },[props.mode])
   const theme = React.useMemo(
     () =>
-      createMuiTheme({
-        palette: {
-          type: "dark",
-          primary: {
-            main: "#23222c",
-            light: "#33323B",
-            ultraLight: "#807F85"
-            
-          },
-          secondary: {
-            main: "#ED1C24",
-
-          },
-          success: {
-            main: "#44B91B",
-          },
-        },
-        breakpoints: {
-          values: {
-            xs: 0,
-            sm: 600,
-            md: 768,
-            lg: 1280,
-            xl: 1920,
-          },
-        },
-      }),
-    [prefersDarkMode]
+      createMuiTheme(
+        props.mode==='dark'? darkTheme: LightTheme
+      ),
+    [props.mode]
   );
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
         <CssBaseline/>
         <Router/>
-
-      </Provider>
     </ThemeProvider>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  mode: state.layoutState.current_theme,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

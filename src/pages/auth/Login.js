@@ -1,7 +1,7 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
-import {login} from '../../redux/actions/user-actions'
+import { connect } from "react-redux";
+import { login } from "../../redux/actions/user-actions";
 import {
   Grid,
   TextField,
@@ -13,10 +13,8 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-
 // Fake user
-import user from '../../data/user'
-
+import user from "../../data/user";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -37,25 +35,25 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   devider: {
-    // display: "flex",
-    // alignItems: "center",
-    // textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
     "&::before": {
       content: '""',
       height: 10,
-      color:'red',
-      display:"block",
-      backgroundColor: 'red',
-      marginRight:"20px",
+      color: "red",
+      display: "block",
+      backgroundColor: "red",
+      marginRight: "20px",
       borderBottom: "1px solid #000",
     },
     "&::after": {
       content: '""',
       height: 10,
-      color:'red',
-      display:"block",
-      backgroundColor: 'red',
-      marginLeft:"20px",
+      color: "red",
+      display: "block",
+      backgroundColor: "red",
+      marginLeft: "20px",
       borderBottom: "1px solid #000",
     },
   },
@@ -64,19 +62,17 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
   const classes = useStyles();
 
-  const [email,setEmail]=useState('');
-  const [password,setPassword]=useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin=(e)=>{
-    console.log(email,password);
-    if(email==="exemple@exemple.com" && password==="biapi"){
-      props.login(user)
+  const handleLogin = (e) => {
+    console.log(email, password);
+    if (email === "exemple@exemple.com" && password === "biapi") {
+      props.login(user);
 
-      window.location.reload()
+      window.location.reload();
     }
-
-
-  }
+  };
   return (
     <div>
       <form className={classes.form}>
@@ -100,7 +96,7 @@ function Login(props) {
                 placeholder="Email or Phone"
                 variant="filled"
                 value={email}
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
           </Grid>
@@ -114,7 +110,7 @@ function Login(props) {
               variant="filled"
               autoComplete="current-password"
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
           <Grid item xs>
@@ -126,7 +122,12 @@ function Login(props) {
             <label> Remeber me</label>
           </Grid>
           <Grid item xs>
-            <Button fullWidth color="secondary" variant="contained" onClick={handleLogin}>
+            <Button
+              fullWidth
+              color="secondary"
+              variant="contained"
+              onClick={handleLogin}
+            >
               Login
             </Button>
           </Grid>
@@ -144,11 +145,27 @@ function Login(props) {
         container
         direction="row"
         justify="center"
-        // className={classes.devider}
+        alignItems="center"
+        spacing={2}
+        className={classes.section}
       >
-        <Typography variant="caption" color="textSecondary">Or</Typography>
+        <Grid item xs={5}>
+          <div
+            style={{ backgroundColor: "#807F85", width: "100%", height: "2px" }}
+          ></div>
+        </Grid>
+        <Grid item xs={2} container justify="center">
+          <Typography variant="caption" color="textSecondary">
+            Or
+          </Typography>
+        </Grid>
+        <Grid item xs={5}>
+          <div
+            style={{ backgroundColor: "#807F85", width: "100%", height: "2px" }}
+          ></div>
+        </Grid>
+        
       </Grid>
-      
 
       <Grid
         container
@@ -178,13 +195,10 @@ function Login(props) {
 }
 
 Login.propTypes = {};
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps =(dispatch)=> ({
-  login: (user)=>dispatch(login(user))
-  
-})
+const mapDispatchToProps = (dispatch) => ({
+  login: (user) => dispatch(login(user)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

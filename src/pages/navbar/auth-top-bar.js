@@ -130,6 +130,7 @@ function AppBar(props) {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleMenu}
+                    color="inherit"
                   >
                     <Avatar
                       style={{ maxHeight: "90%" }}

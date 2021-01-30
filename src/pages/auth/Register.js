@@ -109,9 +109,24 @@ function Register(props) {
         container
         direction="row"
         justify="center"
-        // className={classes.devider}
+        alignItems="center"
+        className={classes.section}
       >
-        <Typography variant="caption" color="textSecondary">Or</Typography>
+        <Grid item xs={5}>
+          <div
+            style={{ backgroundColor: "#807F85", width: "100%", height: "2px" }}
+          ></div>
+        </Grid>
+        <Grid item xs={2} container justify="center">
+          <Typography align="center" variant="caption" color="textSecondary">
+            Or
+          </Typography>
+        </Grid>
+        <Grid item xs={5}>
+          <div
+            style={{ backgroundColor: "#807F85", width: "100%", height: "2px" }}
+          ></div>
+        </Grid>
       </Grid>
       
 

@@ -20,6 +20,9 @@ import successFailTheme from "../../themes/success-fail";
 //Compoennts
 import SimpleRadio from "../../components/SimpleRadio";
 
+// Actions
+import {toggleTheme} from "../../redux/actions/layout-actions";
+
 const Menu = [
   {
     id: "Food & drinks",
@@ -160,11 +163,12 @@ function Settings(props) {
             <Select
               labelId="theme-select"
               id="theme-input"
-              value="dark"
+              defaultValue={props.mode || "dark"}
               variant="filled"
+              onChange={(e,value)=>{props.changeTheme(e.target.value)}}
             >
               <MenuItem value="dark">Dark</MenuItem>
-              <MenuItem value={"default"}>Default</MenuItem>
+              <MenuItem value="default">Default</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -191,12 +195,15 @@ function Settings(props) {
 Settings.propTypes = {};
 
 const mapStateToProps = (state) => ({
-  user: state.userState.user
+  user: state.userState.user,
+  mode: state.layoutState.current_theme,
+
   
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps =(dispatch)=> ({
+  changeTheme: (mode)=> dispatch(toggleTheme(mode))
   
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)

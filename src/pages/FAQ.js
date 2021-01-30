@@ -125,31 +125,13 @@ function FAQ(props) {
       <Grid item xs={12} container>
         {
           Menu.map((el,idx)=>(
-        //   <Accordion className={classes.accordion}>
-        //   <AccordionSummary
-        //     expandIcon={<AddIcon className={classes.expendIcon} />}
-        //     aria-label="Expand"
-        //     aria-controls="additional-actions1-content"
-        //     id={`accordion-item-${idx}`}
-        //   >
-        //     <Typography>
-        //       {" "}
-        //       {el.title}
-        //     </Typography>
-        //   </AccordionSummary>
-        //   <AccordionDetails>
-        //     <Typography color="textSecondary">
-        //       {el.body}
-        //     </Typography>
-        //   </AccordionDetails>
-        // </Accordion>
         <Accordion key={idx} square expanded={expanded === el.title} onChange={handleChange(el.title)} className={classes.accordion}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" 
         expandIcon={expanded === el.title?<RemoveIcon className={classes.expendIcon}/>:<AddIcon className={classes.expendIcon}/>}>
           <Typography>{el.title}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant="caption" color="textSecondary">
             {el.body}
           </Typography>
         </AccordionDetails>
